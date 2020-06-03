@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,10 @@ export class AppComponent {
   super: number = 0.095;
   workingDays: number = 230;
   dailyRate: number = 1.3;
+
+  onSubmit(event: any){
+    event.preventDefault();
+  }
 
   setWorkingDays(event: any){
     this.workingDays = event.target.value;

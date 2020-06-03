@@ -4,40 +4,64 @@
   <div class="row">
     <div class="col">
       <label for="baseSalary">Base Salary ($)</label>
-      <input type="number" id="baseSalary" class="form-control" (change)="setBaseSalary($event)" value="{{baseSalary}}" placeholder="120000">
+      <input type="number" id="baseSalary" class="form-control" (change)="setBaseSalary($event)" value="{{baseSalary}}" placeholder="120000" step="1" min="0">
+      <small id="emailHelp" class="form-text text-muted">Enter your base salary.</small>
     </div>
     <div class="col">
       <label for="super">Super (%)</label>
-      <input type="number" id="super" class="form-control" (change)="setSuper($event)" value="{{super}}" placeholder="9.5">
+      <input type="number" id="super" class="form-control" (change)="setSuper($event)" value="{{super}}" placeholder="9.5" step="0.001" min="0">
+      <small id="emailHelp" class="form-text text-muted">Enter super which is taken.</small>
     </div>
-
   </div>
   <div class="row">
     <div class="col">
       <label for="workingDays">Working Days</label>
-      <input type="number" id="workingDays" class="form-control" (change)="setWorkingDays($event)" value="{{workingDays}}" placeholder="{{workingDays}}">
+      <input type="number" id="workingDays" class="form-control" (change)="setWorkingDays($event)" value="{{workingDays}}" placeholder="230" step="1" min="0">
+      <small id="emailHelp" class="form-text text-muted">Enter the amount of working days.</small>
     </div>
     <div class="col">
       <label for="dailyRate">Daily Rate (%)</label>
-      <input type="number" id="dailyRate" class="form-control" (change)="setDailyRate($event)" value="{{dailyRate}}" placeholder="{{dailyRate}}">
+      <input type="number" id="dailyRate" class="form-control" (change)="setDailyRate($event)" value="{{dailyRate}}" placeholder="1.3" step="0.1" min="0">
+      <small id="emailHelp" class="form-text text-muted">Enter daily rate.</small>
     </div>
   </div>
-
-  <button type="submit" class="btn btn-primary">Calculate</button>
+  
+  <div style="padding-top: 15px;">
+    <button type="submit" class="btn btn-primary" (click)="onSubmit($event)">Calculate</button>
+  </div>
+  
 </form>
 <hr/>
 <div class="container">
   <div class="row">
-    <label><strong>Super =</strong>  $</label> {{getTotalSuper().toFixed(0) | number:'1.0':'en-US'}}
+    <p>
+      <label><strong>Super =</strong></label> ${{getTotalSuper().toFixed(0) | number:'1.0':'en-US'}}
+    </p>
   </div>
   <div class="row">
-    <label><strong>Total Package =</strong> $</label> {{getTotalPackage().toFixed(0) | number:'1.0':'en-US'}}
+    <p>
+      <label><strong>Total Package =</strong></label> ${{getTotalPackage().toFixed(0) | number:'1.0':'en-US'}}
+    </p>
   </div>
   <hr/>
   <div class="row">
-    <label><strong>Divided by average working days in year ({{workingDays}}) =</strong> $</label> {{getTotalDividedAvgWorkingDays().toFixed(0) | number:'1.0':'en-US'}}
+    <p>
+      <label><strong>Divided by average working days in year ({{workingDays}}) =</strong></label> <span class="text-danger"> ${{getTotalDividedAvgWorkingDays().toFixed(0) | number:'1.0':'en-US'}}</span> 
+      <small id="emailHelp" class="form-text text-muted">Gives you your daily rate as a contractor inclusive of Super.</small>
+    </p>
   </div>
   <div class="row">
-    <label><strong>Daily Rate + {{getDailyRateAsPercent()}}% =</strong> $</label> {{getTotalDailyRate().toFixed(0) | number:'1.0':'en-US'}}
+    <p>
+      <label><strong>Daily Rate + {{getDailyRateAsPercent()}}% =</strong></label> <span class="text-danger"> ${{getTotalDailyRate().toFixed(0) | number:'1.0':'en-US'}}</span> 
+      <small id="emailHelp" class="form-text text-muted">Gives you your daily rate as a contractor inclusive of Super.</small>      
+    </p>
+  </div>
+
+  <div class="alert alert-secondary" role="alert">
+    Average working days in year calculated - (5 days a week x 46 weeks)
+  </div>
+
+  <div class="alert alert-secondary" role="alert">
+    Contractors, on average, get paid 30% extra to cover sick pay, annual leave etc
   </div>
 </div>
