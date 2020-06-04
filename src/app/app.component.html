@@ -3,14 +3,14 @@
 <form>
   <div class="row">
     <div class="col">
-      <label for="baseSalary">Base Salary ($)</label>
+      <label for="baseSalary" class="text-primary">Base Salary ($)</label>
       <input type="number" id="baseSalary" class="form-control" (change)="setBaseSalary($event)" value="{{baseSalary}}" placeholder="120000" step="1" min="0">
       <small id="emailHelp" class="form-text text-muted">Enter your base salary.</small>
     </div>
     <div class="col">
       <label for="super">Super (%)</label>
       <input type="number" id="super" class="form-control" (change)="setSuper($event)" value="{{super}}" placeholder="9.5" step="0.001" min="0">
-      <small id="emailHelp" class="form-text text-muted">Enter super which is taken.</small>
+      <small id="emailHelp" class="form-text text-muted">Enter amount of super taken.</small>
     </div>
   </div>
   <div class="row">
@@ -47,7 +47,7 @@
   <div class="row">
     <p>
       <label><strong>Divided by average working days in year ({{workingDays}}) =</strong></label> <span class="text-danger"> ${{toNumber(getTotalDividedAvgWorkingDays()).toFixed(0) | number:'1.0':'en-US'}}</span> 
-      <small id="emailHelp" class="form-text text-muted">Gives you your daily rate as a contractor inclusive of Super.</small>
+      <small id="emailHelp" class="form-text text-muted">This figure gives you your <em>'daily rate'</em> as a perm employee. This number includes your super.</small>
     </p>
   </div>
   <div class="row">
