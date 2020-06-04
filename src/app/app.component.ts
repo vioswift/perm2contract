@@ -37,18 +37,22 @@ export class AppComponent {
   }
 
   getTotalPackage(){
-    return this.getTotalSuper() + this.baseSalary;
+    return +this.getTotalSuper() + +this.baseSalary;
   }
 
   getTotalSuper(){
-    return this.baseSalary * this.super;
+    return +this.baseSalary * +this.super;
   }
 
   getTotalDividedAvgWorkingDays(){
-    return this.getTotalPackage() / this.workingDays;
+    return +this.getTotalPackage() / +this.workingDays;
   }
 
   getTotalDailyRate(){
-    return this.getTotalDividedAvgWorkingDays() * this.dailyRate;
+    return +this.getTotalDividedAvgWorkingDays() * +this.dailyRate;
+  }
+
+  toNumber(number) {
+    return Number(number);
   }
 }

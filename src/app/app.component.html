@@ -35,24 +35,24 @@
 <div class="container">
   <div class="row">
     <p>
-      <label><strong>Super =</strong></label> ${{getTotalSuper().toFixed(0) | number:'1.0':'en-US'}}
+      <label><strong>Super =</strong></label> ${{toNumber(getTotalSuper()).toFixed(0) | number:'1.0':'en-US'}}
     </p>
   </div>
   <div class="row">
     <p>
-      <label><strong>Total Package =</strong></label> ${{getTotalPackage().toFixed(0) | number:'1.0':'en-US'}}
+      <label><strong>Total Package =</strong></label> ${{toNumber(getTotalPackage()).toFixed(0) | number:'1.0':'en-US'}}
     </p>
   </div>
   <hr/>
   <div class="row">
     <p>
-      <label><strong>Divided by average working days in year ({{workingDays}}) =</strong></label> <span class="text-danger"> ${{getTotalDividedAvgWorkingDays().toFixed(0) | number:'1.0':'en-US'}}</span> 
+      <label><strong>Divided by average working days in year ({{workingDays}}) =</strong></label> <span class="text-danger"> ${{toNumber(getTotalDividedAvgWorkingDays()).toFixed(0) | number:'1.0':'en-US'}}</span> 
       <small id="emailHelp" class="form-text text-muted">Gives you your daily rate as a contractor inclusive of Super.</small>
     </p>
   </div>
   <div class="row">
     <p>
-      <label><strong>Daily Rate + {{getDailyRateAsPercent()}}% =</strong></label> <span class="text-danger"> ${{getTotalDailyRate().toFixed(0) | number:'1.0':'en-US'}}</span> 
+      <label><strong>Daily Rate + {{getDailyRateAsPercent()}}% =</strong></label> <span class="text-danger"> ${{toNumber(getTotalDailyRate()).toFixed(0) | number:'1.0':'en-US'}}</span> 
       <small id="emailHelp" class="form-text text-muted">Gives you your daily rate as a contractor inclusive of Super.</small>      
     </p>
   </div>
